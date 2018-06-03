@@ -74,7 +74,7 @@ void Fun()
 
 int main()
 {
-	Print("This is a GIT controlled repo ");
+	Print("This is a GIT controlled repo");
 	PRINT("This is a output pane");
 	Fun();
 	std::getchar();
