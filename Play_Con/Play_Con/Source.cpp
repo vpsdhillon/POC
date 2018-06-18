@@ -62,7 +62,7 @@ void Fun()
 	shared_ptr<Test> test_sh = make_shared<Test>();
 	test_sh->i = 20;
 	vec_sh.push_back(test_sh);
-	test_sh->i = 30;
+
 	for (const auto& obj : vec_sh)
 	{
 		std::cout << obj->i << "\n";
@@ -72,10 +72,24 @@ void Fun()
 	boost_Test_shared->i = 50;
 }
 
+void Copy_Shared()
+{
+	shared_ptr<Test> test_sh = make_shared<Test>();
+	test_sh->i = 20;
+
+	shared_ptr<Test> test_duplicate = std::make_shared<Test>(*test_sh);
+	//shared_ptr<Test> test_duplicate = test_sh;
+
+	test_duplicate->i = 30;
+
+	std::cout << test_sh->i << "\n";
+}
+
 int main()
 {
 	Print("This is a GIT controlled repo");
 	PRINT("This is a output pane");
-	Fun();
+	//Fun();
+	Copy_Shared();
 	std::getchar();
 }
