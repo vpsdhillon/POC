@@ -103,7 +103,7 @@ typedef std::shared_ptr<ListTest> ListTestShared;
 typedef std::list<ListTestShared> ListTestList;
 
 
-int main()
+auto main() -> int
 {
 	ListTestList testList;
 
@@ -134,7 +134,6 @@ int main()
 	Print("This is a GIT controlled repo");
 	PRINT("This is a output pane");
 	//Fun();
-	Copy_Shared();
 
 	customMap custom;
 	custom[1] = 10;
