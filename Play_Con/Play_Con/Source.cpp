@@ -65,7 +65,7 @@ void Fun()
 	shared_ptr<Test> test_sh = make_shared<Test>();
 	test_sh->i = 20;
 	vec_sh.push_back(test_sh);
-	test_sh->i = 30;
+
 	for (const auto& obj : vec_sh)
 	{
 		std::cout << obj->i << "\n";
@@ -133,6 +133,8 @@ int main()
 
 	Print("This is a GIT controlled repo");
 	PRINT("This is a output pane");
+	//Fun();
+	Copy_Shared();
 
 	customMap custom;
 	custom[1] = 10;
