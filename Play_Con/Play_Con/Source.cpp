@@ -4,6 +4,9 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
+#include <functional>
+#include <map>
+#include <list>
 
 using namespace std;
 
@@ -70,12 +73,74 @@ void Fun()
 
 	boost::shared_ptr<Test> boost_Test_shared = boost::make_shared<Test>();
 	boost_Test_shared->i = 50;
-}
+};
+
+std::function<int(int)> Fibonacci = [](int number) -> int 
+{
+	if (number < 1)
+	{
+		return 0;
+	}
+	else if (number == 1)
+	{
+		return 1;
+	}
+	return (Fibonacci(number - 1) + Fibonacci(number - 2));
+};
+
+typedef std::map<int, int> customMap;
+
+
+class ListTest
+{
+public:
+	string str;
+	ListTest() : str("Test")
+	{}
+};
+
+typedef std::shared_ptr<ListTest> ListTestShared;
+typedef std::list<ListTestShared> ListTestList;
+
 
 int main()
 {
+	ListTestList testList;
+
+	for (int i = 0; i < 5; i++)
+	{
+		testList.push_back(std::make_shared<ListTest>());
+	}
+
+	ListTestList::iterator it = testList.begin(), ti = testList.end();
+
+	while (it != ti)
+	{
+		ListTestShared &test = *it;
+		it++;
+	}
+
+	ListTestList::iterator it1 = testList.begin(), ti1 = testList.end();
+
+	while (it1 != ti1)
+	{
+		std::cout << (*it1)->str << "\n";
+		it1++;
+	}
+
+	getchar();
+	return 0;
+
 	Print("This is a GIT controlled repo");
 	PRINT("This is a output pane");
-	Fun();
+
+	customMap custom;
+	custom[1] = 10;
+	custom[1] = 20;
+	custom.insert(std::pair<int, int>(1, 30));
+	custom.emplace(std::pair<int, int>(1, 30));
+	std::cout << custom[1];
+
+	//Fun();
 	std::getchar();
 }
